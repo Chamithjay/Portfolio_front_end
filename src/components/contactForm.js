@@ -11,7 +11,7 @@ function ContactForm() {
 
   useEffect(() => {
     // Fetch user data
-    axios.get('http://localhost:5000/user')
+    axios.get(`${process.env.REACT_APP_API_URL}/user`)
       .then(response => {
         setUser(response.data);
       })
