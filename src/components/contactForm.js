@@ -7,6 +7,8 @@ function ContactForm() {
   const [user, setUser] = useState([null]);
   const [isVisible, setIsVisible] = useState(false);
 
+
+
   useEffect(() => {
     // Fetch user data
     axios.get('http://localhost:5000/user')
@@ -54,7 +56,7 @@ function ContactForm() {
   function handleSubmit(e) {
     e.preventDefault();
     console.log(contact);
-    axios.post('http://localhost:5000/contact', contact)
+    axios.post(`${process.env.REACT_APP_API_URL}/contact`, contact)
       .then(res => {
         console.log(res);
       })
