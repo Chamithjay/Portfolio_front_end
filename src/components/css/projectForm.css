@@ -1,0 +1,122 @@
+/* Scope styles to .project-form-page */
+.project-form-page {
+    font-family: "Nunito", sans-serif;
+ 
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    margin-top: -80px;
+    color: #333333;
+}
+
+.project-form-page .container {
+    width: 1000px; /* Reduced width for compact design */
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center; /* Center align content */
+}
+
+.project-form-page h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2F3645;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+    border-bottom: 3px solid #E6B9A6;
+    padding-bottom: 10px;
+}
+
+.project-form-page .form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.project-form-page label {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #2F3645;
+    text-align: left;
+    width: 100%; /* Align text to the left inside the reduced-width form */
+}
+
+.project-form-page .form-control {
+    width: 80%; /* Reduced width for input fields */
+    height: 40px;
+    font-size: 0.9rem;
+    border: 2px solid #D9E1E7;
+    border-radius: 8px;
+    padding: 5px 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #333333;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.project-form-page .form-control:focus {
+    border-color: #0090FF;
+    background-color: rgba(255, 255, 255, 0.2);
+    outline: none;
+    box-shadow: 0 0 4px rgba(0, 144, 255, 0.5);
+}
+
+.project-form-page .form-control::placeholder {
+    color: #809FB8;
+    font-style: italic;
+}
+
+.project-form-page .form-control-file {
+    font-size: 0.9rem;
+    color: #333333;
+    width: 80%; /* Matches the input field width */
+}
+
+.project-form-page .form-control-file:focus {
+    outline: none;
+}
+
+.project-form-page button {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #ffffff;
+    background-color: #2F3645;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    width: 80%; /* Matches input field width */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    margin-top: 10px;
+}
+
+.project-form-page button:hover {
+    background-color: #E6B9A6;
+}
+
+.project-form-page button:active {
+    transform: scale(0.98);
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .project-form-page .container {
+        width: 90%; /* Full width for smaller devices */
+    }
+
+    .project-form-page .form-control {
+        width: 100%; /* Full width input fields on smaller screens */
+    }
+
+    .project-form-page button {
+        width: 100%;
+    }
+}
