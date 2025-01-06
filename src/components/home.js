@@ -1,22 +1,18 @@
-import Projects from './projects';
-import ContactForm from './contactForm'
-import Skills from './skills';
-import Hero from './hero';
-import Navbar from './navBar';
-import './css/home.css';
-
-
-
+import Projects from "./projects";
+import ContactForm from "./contactForm";
+import Skills from "./skills";
+import Hero from "./hero";
+import Navbar from "./navBar";
+import "./css/home.css";
 
 function Home() {
   return (
     <div className="home-container">
-      <Navbar/>
+      <Navbar />
       <Hero />
       <Projects />
-      <Skills/>
-      <ContactForm/>     
-      
+      <Skills />
+      <ContactForm />
     </div>
   );
 }

@@ -1,28 +1,29 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import './css/skills.css';
-import CheckMarkIcon from '../assets/checkmark.png';
+import "bootstrap/dist/css/bootstrap.min.css";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import "./css/skills.css";
+import CheckMarkIcon from "../assets/checkmark.png";
 
 function Skill() {
   const [skills, setSkills] = useState([]);
 
   useEffect(() => {
     // Fetch skills data
-    axios.get('http://localhost:5000/skills')
-      .then(response => {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/skills`)
+      .then((response) => {
         setSkills(response.data);
       })
-      .catch(error => {
-        console.error('Error fetching data:', error);
+      .catch((error) => {
+        console.error("Error fetching data:", error);
       });
 
     // Intersection Observer for fade-in effect
     const observer = new IntersectionObserver(
       (entries, observer) => {
-        entries.forEach(entry => {
+        entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('appear');
+            entry.target.classList.add("appear");
             observer.unobserve(entry.target); // Stop observing once animated
           }
         });
@@ -31,8 +32,8 @@ function Skill() {
     );
 
     // Observe specific elements
-    const fadeElements = document.querySelectorAll('.fade-in');
-    fadeElements.forEach(el => observer.observe(el));
+    const fadeElements = document.querySelectorAll(".fade-in");
+    fadeElements.forEach((el) => observer.observe(el));
 
     return () => {
       // Cleanup observer

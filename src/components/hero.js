@@ -1,29 +1,30 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import './css/hero.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Github from '../assets/github.png';
-import LinkedIn from '../assets/linkedin.png';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import "./css/hero.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Github from "../assets/github.png";
+import LinkedIn from "../assets/linkedin.png";
 
 function Hero() {
   const [user, setUser] = useState([null]);
 
   useEffect(() => {
     // Fetch user data
-    axios.get('http://localhost:5000/user')
-      .then(response => {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/user`)
+      .then((response) => {
         setUser(response.data);
       })
-      .catch(error => {
-        console.error('Error fetching data:', error);
+      .catch((error) => {
+        console.error("Error fetching data:", error);
       });
 
     // Intersection Observer for fade-in effect
     const observer = new IntersectionObserver(
       (entries, observer) => {
-        entries.forEach(entry => {
+        entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('appear');
+            entry.target.classList.add("appear");
             observer.unobserve(entry.target); // Stop observing once appeared
           }
         });
@@ -31,8 +32,8 @@ function Hero() {
       { threshold: 0.2 } // Trigger when 20% of the element is visible
     );
 
-    const fadeElements = document.querySelectorAll('.fade-in');
-    fadeElements.forEach(el => observer.observe(el));
+    const fadeElements = document.querySelectorAll(".fade-in");
+    fadeElements.forEach((el) => observer.observe(el));
 
     return () => {
       // Cleanup observer
@@ -52,7 +53,7 @@ function Hero() {
         <div className="btn-container fade-in">
           <button
             className="btn btn-color-1"
-            onClick={() => (window.location.href = './#contact')}
+            onClick={() => (window.location.href = "./#contact")}
           >
             Contact Info
           </button>
@@ -62,13 +63,18 @@ function Hero() {
             src={LinkedIn}
             alt="My LinkedIn profile"
             className="icon"
-            onClick={() => (window.location.href = 'https://www.linkedin.com/in/chamitha-thambiliyagoda/')}
+            onClick={() =>
+              (window.location.href =
+                "https://www.linkedin.com/in/chamitha-thambiliyagoda/")
+            }
           />
           <img
             src={Github}
             alt="My Github profile"
             className="icon"
-            onClick={() => (window.location.href = 'https://github.com/Chamithjay')}
+            onClick={() =>
+              (window.location.href = "https://github.com/Chamithjay")
+            }
           />
         </div>
       </div>

@@ -1,22 +1,21 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import './css/contactForm.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import "./css/contactForm.css";
 
 function ContactForm() {
   const [user, setUser] = useState([null]);
   const [isVisible, setIsVisible] = useState(false);
 
-
-
   useEffect(() => {
     // Fetch user data
-    axios.get(`${process.env.REACT_APP_API_URL}/user`)
-      .then(response => {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/user`)
+      .then((response) => {
         setUser(response.data);
       })
-      .catch(error => {
-        console.error('Error fetching data:', error);
+      .catch((error) => {
+        console.error("Error fetching data:", error);
       });
 
     // Intersection Observer for fade-in effect
@@ -31,7 +30,7 @@ function ContactForm() {
       { threshold: 0.2 } // Trigger when 20% of the section is visible
     );
 
-    const section = document.querySelector('.contact-section');
+    const section = document.querySelector(".contact-section");
     if (section) {
       observer.observe(section);
     }
@@ -42,10 +41,10 @@ function ContactForm() {
   }, []);
 
   const [contact, setContact] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
 
   const handleInput = (e) => {
@@ -56,11 +55,12 @@ function ContactForm() {
   function handleSubmit(e) {
     e.preventDefault();
     console.log(contact);
-    axios.post(`${process.env.REACT_APP_API_URL}/contact`, contact)
-      .then(res => {
+    axios
+      .post(`${process.env.REACT_APP_API_URL}/contact`, contact)
+      .then((res) => {
         console.log(res);
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
   }
@@ -68,7 +68,7 @@ function ContactForm() {
   return (
     <section
       id="contact"
-      className={`contact-section ${isVisible ? 'appear' : 'fade-in'}`}
+      className={`contact-section ${isVisible ? "appear" : "fade-in"}`}
     >
       <div className="contact-card">
         <h1 className="text-center contact-header">Contact</h1>
@@ -122,7 +122,10 @@ function ContactForm() {
                     ></textarea>
                   </div>
                   <div>
-                    <button type="submit" className="btn btn-primary custom-button">
+                    <button
+                      type="submit"
+                      className="btn btn-primary custom-button"
+                    >
                       Submit
                     </button>
                   </div>
