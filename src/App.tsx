@@ -5,12 +5,14 @@ import SkillPage from "./pages/SkillsPage";
 import ProjectPage from "./pages/ProjectsPage";
 import ProfilePage from "./pages/ProfilePage";
 import AdminLayout from "./layouts/AdminLayout";
+import Home from "./pages/Home";
 import "./index.css";
 
 export default function App() {
   return (
     <Router>
       <Routes>
+        <Route path="/" element={<Home />} />
         {/* Public/admin login route */}
         <Route path="/admin/login" element={<AdminLogin />} />
 
