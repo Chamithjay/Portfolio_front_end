@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import AdminNavbar from "../components/AdminNavbar";
-import { api } from "../api/api";  // Import your api instance
+import { api } from "../api/api";  
 
 interface Skill {
   name: string;
@@ -94,9 +93,6 @@ const SkillPage: React.FC = () => {
 
   return (
     <>
-      <div className="fixed top-0 left-0 w-full bg-white shadow-md z-50">
-        <AdminNavbar />
-      </div>
       <main className="p-6 pt-24 bg-gray-50 min-h-screen">
         <h1 className="text-3xl font-bold mb-6">Manage Skills</h1>
 

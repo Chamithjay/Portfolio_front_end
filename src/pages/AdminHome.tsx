@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import AdminNavbar from "../components/AdminNavbar";
-import ProjectCard from "../components/ProjectCard"; // Import your ProjectCard component
+import ProjectCard from "../components/ProjectCard"; 
 import { fetchProfile, fetchProjects, fetchSkills } from "../api/api";
 
 interface Profile {
@@ -48,12 +47,6 @@ const AdminHome: React.FC = () => {
 
   return (
     <>
-      {/* Fixed Navbar */}
-      <div className="fixed top-0 left-0 w-full bg-white shadow-md z-50">
-        <AdminNavbar />
-      </div>
-
-      {/* Main Content with top padding equal to navbar height */}
       <div className="p-6 pt-24 bg-gray-50 min-h-screen">
         {/* Profile Section */}
         <section className="mb-10">

@@ -1,13 +1,6 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import {
-  LayoutDashboard,
-  Sparkles,
-  Briefcase,
-  UserCircle,
-  Menu,
-  X,
-} from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface AdminNavbarProps {
@@ -18,11 +11,12 @@ const AdminNavbar = ({ className = "" }: AdminNavbarProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const linkClasses = ({ isActive }: { isActive: boolean }) =>
-    `group relative flex items-center gap-2 px-4 py-2 rounded-md transition-colors duration-300 ${
-      isActive
-        ? "bg-gray-900 text-white shadow-lg scale-105"
-        : "text-gray-300 hover:bg-white/5 hover:text-white"
-    }`;
+  `group relative flex items-center gap-2 px-4 py-2 rounded-md transition-colors duration-300 text-lg ${
+    isActive
+      ? "underline decoration-2 underline-offset-4 text-grey"
+      : "text-gray hover:bg-white/5 hover:text-gray-500"
+  }`;
+
 
   const iconVariants = {
     initial: { scale: 1, rotate: 0 },
@@ -36,15 +30,15 @@ const AdminNavbar = ({ className = "" }: AdminNavbarProps) => {
   };
 
   const navLinks = [
-    { to: "/admin", label: "Dashboard", icon: LayoutDashboard },
-    { to: "/admin/skills", label: "Skills", icon: Sparkles },
-    { to: "/admin/projects", label: "Projects", icon: Briefcase },
-    { to: "/admin/profile", label: "Profile", icon: UserCircle },
+    { to: "/admin", label: "Dashboard" },
+    { to: "/admin/skills", label: "Skills" },
+    { to: "/admin/projects", label: "Projects" },
+    { to: "/admin/profile", label: "Profile" },
   ];
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full bg-gray-800 h-16 flex items-center px-6 shadow-lg border-b border-gray-700 justify-between z-50 ${className}`}
+      className={`fixed top-0 left-0 w-full bg-white h-16 flex items-center px-6   justify-between z-50 ${className}`}
     >
       {/* Logo + Title */}
       <motion.div
@@ -53,7 +47,7 @@ const AdminNavbar = ({ className = "" }: AdminNavbarProps) => {
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <h1 className="ml-3 text-white text-xl font-bold tracking-wide select-none">
+        <h1 className="ml-3 text-grey text-2xl font-bold tracking-wide select-none">
           Admin Portal
         </h1>
       </motion.div>
@@ -65,7 +59,7 @@ const AdminNavbar = ({ className = "" }: AdminNavbarProps) => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
       >
-        {navLinks.map(({ to, label, icon: Icon }) => (
+        {navLinks.map(({ to, label }) => (
           <NavLink key={to} to={to} className={linkClasses} end>
             {({ isActive }) => (
               <>
@@ -75,9 +69,7 @@ const AdminNavbar = ({ className = "" }: AdminNavbarProps) => {
                   whileHover="hover"
                   animate={isActive ? "active" : "initial"}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                >
-                  <Icon size={20} />
-                </motion.div>
+                ></motion.div>
                 <motion.span
                   variants={textVariants}
                   initial="initial"
@@ -95,7 +87,7 @@ const AdminNavbar = ({ className = "" }: AdminNavbarProps) => {
       <div className="md:hidden ml-auto">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="text-white focus:outline-none"
+          className="text-gray focus:outline-none"
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -105,26 +97,25 @@ const AdminNavbar = ({ className = "" }: AdminNavbarProps) => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="absolute top-16 right-4 w-48 bg-gray-800 shadow-lg border border-gray-700 rounded-md md:hidden z-50"
+            className="absolute top-16 right-4 w-48 bg-white shadow-lg border border-gray-700 rounded-md md:hidden z-50"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
           >
-            {navLinks.map(({ to, label, icon: Icon }) => (
+            {navLinks.map(({ to, label }) => (
               <NavLink
                 key={to}
                 to={to}
                 className={({ isActive }) =>
                   `flex items-center gap-2 px-4 py-2 ${
                     isActive
-                      ? "bg-gray-900 text-white"
-                      : "text-gray-300 hover:bg-white/5 hover:text-white"
+                      ? "bg-gray-700 text-white"
+                      : "text-gray hover:bg-gray-300 hover:text-gray"
                   }`
                 }
                 onClick={() => setIsOpen(false)}
               >
-                <Icon size={18} />
                 {label}
               </NavLink>
             ))}
